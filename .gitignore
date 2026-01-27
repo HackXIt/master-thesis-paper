@@ -1,0 +1,239 @@
+# IDE
+**/.vscode/.history/
+
+# FHTW Examples
+Examples/
+
+# Output PDFs
+*.pdf
+
+## Core LaTeX auxiliary files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+
+## Intermediate documents
+*.dvi
+*.xdv
+*-converted-to.*
+
+## Generated if "output-dir" is not used
+*.fdb_latexmk
+
+## Bibliography auxiliary files (bibtex/biber/biblatex)
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+
+## Build tool auxiliary files
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+## latexmk
+*.fdb_latexmk
+*.synctex.gz
+*.synctex.gz(busy)
+*.run.xml
+
+## Auxiliary and intermediate files from other packages
+*.alg
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.idx
+*.ilg
+*.ind
+*.loa
+*.nav
+*.snm
+*.vrb
+
+## Amsthm
+*.thm
+
+## beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+## Listings
+*.lol
+
+## Changes package
+*.soc
+
+## Comment package
+*.cut
+
+## Cref package
+*.crf
+
+## Minted
+_minted*
+*.pyg
+
+## Easy-todo package
+*.lod
+
+## Endfloat package
+*.ttt
+*.fff
+
+## Hyperref package
+*.brf
+
+## Gnuplot
+*.gnuplot
+*.table
+
+## KBibTeX
+*~[0-9]*
+
+## Makeindex
+*.idx
+*.ilg
+*.ind
+
+## Memoir class
+*.mw
+
+## Minitoc
+*.maf
+*.mlf
+*.mlt
+*.mtc[0-9]*
+*.slf[0-9]*
+*.slt[0-9]*
+*.stc[0-9]*
+
+## Nomenclature
+*.nlg
+*.nlo
+*.nls
+
+## REVTeX
+*.ltx
+
+## Sagetex
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
+
+## Scrlttr2
+*.lco
+
+## Sympy
+*.sout
+*.sympy
+
+## Standalone
+*.sta
+
+## SVN info
+*.svn
+*.svnignore
+
+## TikZ/PGF
+*.dpth
+*.md5
+*.auxlock
+*.figlist
+*.makefile
+
+## Todonotes
+*.tdo
+
+## xcolor
+*.xcp
+
+## xmpincl
+*.xmpi
+
+## xindy
+*.xdy
+
+## xypic precompiled matrices
+*.xyc
+
+## Latexian
+TSWLatexianTemp*
+
+## Texpad
+.texpadtmp
+
+## LyX
+*.lyx~
+
+## Kile
+*.backup
+
+## WinEdt
+*.bak
+*.sav
+
+## GnuEmacs / AUCTeX
+auto/*
+*.el
+
+## TeXnicCenter
+*.tps
+
+## TexStudio
+*.user.atsuo
+
+## macOS
+.DS_Store
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Linux
+*~
+\#*\#
+.nfs*
+
+## Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+## Backup files
+*.bak
+*.orig
+
+## Python (if using pythontex or similar)
+__pycache__/
+*.py[cod]
+pythontex-files-*/
+
+## R (if using knitr)
+*.Rhistory
+*.Rapp.history
+
+## Build directories
+build/
+output/
+_build/

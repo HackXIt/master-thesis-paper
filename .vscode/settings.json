@@ -1,0 +1,106 @@
+{
+    // LaTeX Workshop Settings
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    // Build recipes - pdflatex with biber for bibliography
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex → biber → pdflatex × 2",
+            "tools": [
+                "pdflatex",
+                "biber",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex only",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "lualatexmk"
+            ]
+        }
+    ],
+    // Tool definitions
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ],
+    // Clean auxiliary files
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+        "*.run.xml",
+        "*.bcf",
+        "*.synctex.gz"
+    ],
+    // PDF viewer settings
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    // Intellisense
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    // LTeX language settings (grammar checker)
+    "ltex.language": "en-US",
+    "ltex.additionalRules.enablePickyRules": true,
+    // File associations
+    "files.associations": {
+        "*.cls": "latex",
+        "*.sty": "latex",
+        "*.bib": "bibtex"
+    }
+}
