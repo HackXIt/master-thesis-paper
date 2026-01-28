@@ -50,6 +50,7 @@
 \newcommand{\doctypeprint}{}
 \DeclareOption{Bachelor}{\renewcommand*{\doctype}{BACHELORARBEIT}}
 \DeclareOption{Master}{\renewcommand*{\doctype}{MASTERARBEIT}}
+\DeclareOption{Proposal}{\renewcommand*{\doctype}{PROPOSAL}}
 \DeclareOption{Seminar}{\renewcommand*{\doctype}{SEMINARARBEIT}}
 \DeclareOption{Projekt}{\renewcommand*{\doctype}{PROJEKTBERICHT}}
 \DeclareOption{Praktikum}{\renewcommand*{\doctype}{PRAKTIKUMSBERICHT}}
@@ -64,42 +65,42 @@
 \ProcessOptions\relax
 
 \LoadClass[a4paper,fontsize=11pt,twoside=false,%
-headings=normal,toc=listof,listof=entryprefix,%
-listof=nochaptergap,bibliography=totoc,%
-numbers=noendperiod]{scrbook}
+  headings=normal,toc=listof,listof=entryprefix,%
+  listof=nochaptergap,bibliography=totoc,%
+  numbers=noendperiod]{scrbook}
 \RequirePackage{scrhack}
 
 \RequirePackage{iftex}
 \ifPDFTeX
- % PDFLaTeX
- \ifpdf
-   \RequirePackage[pdftex]{hyperref}
-   \RequirePackage{graphicx}
- \else
-   \RequirePackage[dvips]{hyperref}
-   \RequirePackage[dvips]{graphicx}
- \fi
+  % PDFLaTeX
+  \ifpdf
+    \RequirePackage[pdftex]{hyperref}
+    \RequirePackage{graphicx}
+  \else
+    \RequirePackage[dvips]{hyperref}
+    \RequirePackage[dvips]{graphicx}
+  \fi
 \else
- \ifXeTeX
-   % XeTeX
-   \RequirePackage{hyperref}
-   \RequirePackage{graphicx}
- \else
-   \ifLuaTeX
-     % LuaTeX
-     \RequirePackage{hyperref}
-     \RequirePackage{graphicx}
-   \else
-     % Some obscure Engine!
-     \ClassError{twbook}{%
-      The TeX-Engine you are using is not supported!\MessageBreak%
-      Try a different Engine!\Messagebreak%
-      Maybe PDFTeX, XeTeX or LuaTeX!
-     }{%
-      Something is wrong with the Tex-Engine you are using.\MessageBreak%
-      We don't support that one!}
-   \fi
-\fi
+  \ifXeTeX
+    % XeTeX
+    \RequirePackage{hyperref}
+    \RequirePackage{graphicx}
+  \else
+    \ifLuaTeX
+      % LuaTeX
+      \RequirePackage{hyperref}
+      \RequirePackage{graphicx}
+    \else
+      % Some obscure Engine!
+      \ClassError{twbook}{%
+        The TeX-Engine you are using is not supported!\MessageBreak%
+        Try a different Engine!\Messagebreak%
+        Maybe PDFTeX, XeTeX or LuaTeX!
+      }{%
+        Something is wrong with the Tex-Engine you are using.\MessageBreak%
+        We don't support that one!}
+    \fi
+  \fi
 \fi
 
 \RequirePackage{color,xcolor}
@@ -116,13 +117,13 @@ numbers=noendperiod]{scrbook}
 \RequirePackage[\sprache]{babel}
 \Ifstr{\sprache}{ngerman}
 {%
- %ngerman
- %change \sprache to german to translate everything else; babel's already loaded
- \renewcommand*{\sprache}{german}
+  %ngerman
+  %change \sprache to german to translate everything else; babel's already loaded
+  \renewcommand*{\sprache}{german}
 }%
 {%
- %german & english
- %Do nothing; everything's fine
+  %german & english
+  %Do nothing; everything's fine
 }%
 \RequirePackage{array}
 \RequirePackage{tikz}
@@ -154,11 +155,11 @@ numbers=noendperiod]{scrbook}
 
 \providecommand*{\@noopterr}[1]{}
 \renewcommand*{\@noopterr}[1]{%
-   \PackageWarning{babel}%
-   {You haven't loaded the option #1\space yet.\MessageBreak%
-   Rerun to set the right option.\MessageBreak%
-   Sie haben die Option #1\space aktuell nicht geladen.\MessageBreak%
-   Kompilieren Sie noch einmal um die korrekte Option zu setzen}}
+  \PackageWarning{babel}%
+  {You haven't loaded the option #1\space yet.\MessageBreak%
+    Rerun to set the right option.\MessageBreak%
+    Sie haben die Option #1\space aktuell nicht geladen.\MessageBreak%
+    Kompilieren Sie noch einmal um die korrekte Option zu setzen}}
 
 \providecommand*\listacroname{}
 \Ifstr{\sprache}{german}{%
@@ -171,9 +172,9 @@ numbers=noendperiod]{scrbook}
 \definecolor{TWgray}{RGB}{114,120,122}
 
 \hypersetup{colorlinks=true, linkcolor=black, linkbordercolor=white,%
-citecolor=black, citebordercolor=white,%
-filecolor=black, filebordercolor=white,%
-urlcolor=TWblue, urlbordercolor=white}
+  citecolor=black, citebordercolor=white,%
+  filecolor=black, filebordercolor=white,%
+  urlcolor=TWblue, urlbordercolor=white}
 \urlstyle{sf}
 
 \addtocounter{tocdepth}{0}
@@ -188,9 +189,9 @@ urlcolor=TWblue, urlbordercolor=white}
 \ofoot[\footnotesize\pagemark]{\footnotesize\pagemark}
 \renewcommand*{\chapterpagestyle}{plain}
 
- \@removefromreset{figure}{chapter}
- \@removefromreset{table}{chapter}
- \@removefromreset{equation}{chapter}
+\@removefromreset{figure}{chapter}
+\@removefromreset{table}{chapter}
+\@removefromreset{equation}{chapter}
 
 \renewcommand*{\theequation}{\protect\small\arabic{equation}\protect\normalsize}
 \renewcommand*{\thefigure}{\protect\small\arabic{figure}\protect\normalsize}
@@ -223,7 +224,7 @@ urlcolor=TWblue, urlbordercolor=white}
   \setkomafont{subsubsection}{\bfseries\normalsize}}
 
 \renewcommand*\chapter{\par\global\@topnum\z@\@afterindentfalse%
-\secdef\@chapter\@schapter}
+  \secdef\@chapter\@schapter}
 
 \Ifstr{\sprache}{english}{%
   \Ifstr{\doctype}{BACHELORARBEIT}{%
@@ -237,13 +238,17 @@ urlcolor=TWblue, urlbordercolor=white}
   \Ifstr{\doctype}{PRAKTIKUMSBERICHT}{%
     \renewcommand*{\doctype}{INTERNSHIP REPORT}}{}
   \Ifstr{\doctype}{LABORPROTOKOLL}{%
-    \renewcommand*{\doctype}{LABORATORY REPORT}}}{}
+    \renewcommand*{\doctype}{LABORATORY REPORT}}{}
+  \Ifstr{\doctype}{PROPOSAL}{%
+    \renewcommand*{\doctype}{THESIS PROPOSAL}}{}}{}
 
-  \renewcommand*{\doctypeprint}{\doctype}
-  \Ifstr{\doctypeprint}{MASTERTHESIS}{%
-    \renewcommand*{\doctypeprint}{MASTER'S THESIS}}{}
-  \Ifstr{\doctypeprint}{BACHELORTHESIS}{%
-    \renewcommand*{\doctypeprint}{BACHELOR PAPER}}{}
+\renewcommand*{\doctypeprint}{\doctype}
+\Ifstr{\doctypeprint}{MASTERTHESIS}{%
+  \renewcommand*{\doctypeprint}{MASTER'S THESIS}}{}
+\Ifstr{\doctypeprint}{BACHELORTHESIS}{%
+  \renewcommand*{\doctypeprint}{BACHELOR PAPER}}{}
+\Ifstr{\doctypeprint}{THESIS PROPOSAL}{%
+  \renewcommand*{\doctypeprint}{THESIS PROPOSAL}}{}
 
 
 \newcommand*{\@cover}{PICs/fhtw_cover.png}
@@ -277,16 +282,16 @@ urlcolor=TWblue, urlbordercolor=white}
 \newcommand*{\@aitoolstablecontent}{}
 \newcommand{\aitoolentry}[3]{\g@addto@macro\@aitoolstablecontent{#1 & #2 & #3 \\\hline}}
 \newcommand*{\listaitools}{
-\ifx\@aitoolstablecontent\@empty%if empty, there's nothing we need to do
-\else%
-\phantomsection
-\Ifstr{\sprache}{german}{\addcontentsline{toc}{chapter}{Dokumentationstabelle KI-basierte Hilfsmittel}}{\addcontentsline{toc}{chapter}{Documentation table of AI-based tools}}%
-\Ifstr{\sprache}{german}{\chapter*{Dokumentationstabelle KI-basierte Hilfsmittel}}{\chapter*{Documentation table of AI-based tools}}%
-\begin{xltabular}{\textwidth}{|>{\hsize=.75\hsize\linewidth=\hsize}X|>{\hsize=.75\hsize\linewidth=\hsize}X|>{\hsize=1.5\hsize\linewidth=\hsize}X|}\hline%
-\Ifstr{\sprache}{german}{KI-basierte Hilfsmittel & Verwendungszweck & Prompt, Quelle, Seite, Absatz\dots}{AI-Based Tool & Intended Use & Prompt, Source, Page, Paragraph\dots}\endhead\hline%
-\@aitoolstablecontent%
-\end{xltabular}%
-\fi%
+  \ifx\@aitoolstablecontent\@empty%if empty, there's nothing we need to do
+  \else%
+    \phantomsection
+    \Ifstr{\sprache}{german}{\addcontentsline{toc}{chapter}{Dokumentationstabelle KI-basierte Hilfsmittel}}{\addcontentsline{toc}{chapter}{Documentation table of AI-based tools}}%
+    \Ifstr{\sprache}{german}{\chapter*{Dokumentationstabelle KI-basierte Hilfsmittel}}{\chapter*{Documentation table of AI-based tools}}%
+    \begin{xltabular}{\textwidth}{|>{\hsize=.75\hsize\linewidth=\hsize}X|>{\hsize=.75\hsize\linewidth=\hsize}X|>{\hsize=1.5\hsize\linewidth=\hsize}X|}\hline%
+      \Ifstr{\sprache}{german}{KI-basierte Hilfsmittel & Verwendungszweck & Prompt, Quelle, Seite, Absatz\dots}{AI-Based Tool & Intended Use & Prompt, Source, Page, Paragraph\dots}\endhead\hline%
+      \@aitoolstablecontent%
+    \end{xltabular}%
+  \fi%
 }
 
 \providecommand{\sc}{}
@@ -296,165 +301,167 @@ urlcolor=TWblue, urlbordercolor=white}
 
 \renewcommand{\and}{\newline}
 \renewcommand*\maketitle[1][1]{%
-\begin{titlepage}
-\pagestyle{empty}
-\tikzifexternalizing{}{%
-  \ThisTileWallPaper{\paperwidth}{\paperheight}{\@cover}%
-}
+  \begin{titlepage}
+    \pagestyle{empty}
+    \tikzifexternalizing{}{%
+      \ThisTileWallPaper{\paperwidth}{\paperheight}{\@cover}%
+    }
 
-\Ifstr{\doctype}{}
-{
-\color{TWblue}
-\null\vspace{125pt}
+    \Ifstr{\doctype}{}
+    {
+    \color{TWblue}
+    \null\vspace{125pt}
     \setcounter{page}{-9}
 
-\hspace*{-26pt}\begin{minipage}{0.66\linewidth}
-  \huge\sffamily \scalebox{1.75}{\begin{minipage}{\linewidth}\@title\end{minipage}}
-\end{minipage}\vspace{23pt}
+    \hspace*{-26pt}\begin{minipage}{0.66\linewidth}
+      \huge\sffamily \scalebox{1.75}{\begin{minipage}{\linewidth}\@title\end{minipage}}
+    \end{minipage}\vspace{23pt}
 
-\hspace*{-24.75pt}\begin{minipage}{0.66\linewidth}
-  \huge\sffamily \scalebox{1.25}{\begin{minipage}{\linewidth}\@extratitle\end{minipage}}
-\end{minipage}\vspace{47pt}
-\setcounter{page}{0}}
-{
-  \ifdraft{\color{red}}{\color{black}}
-  \null\vspace{8pt}
-  \setcounter{page}{-9}
+    \hspace*{-24.75pt}\begin{minipage}{0.66\linewidth}
+      \huge\sffamily \scalebox{1.25}{\begin{minipage}{\linewidth}\@extratitle\end{minipage}}
+    \end{minipage}\vspace{47pt}
+    \setcounter{page}{0}}
+    {
+    \ifdraft{\color{red}}{\color{black}}
+    \null\vspace{8pt}
+    \setcounter{page}{-9}
 
-\ifdraft{\hspace*{-30pt}\scalebox{1.85}{\sffamily\textbf\doctypeprint -- DRAFT}}{\hspace*{-30pt}\scalebox{1.85}{\sffamily\textbf\doctypeprint}}
-\vspace{17pt}
+    \ifdraft{\hspace*{-30pt}\scalebox{1.85}{\sffamily\textbf\doctypeprint -- DRAFT}}{\hspace*{-30pt}\scalebox{1.85}{\sffamily\textbf\doctypeprint}}
+    \vspace{17pt}
 
-\hspace*{-34pt}\scalebox{1.5}{%
-    \begin{minipage}{0.72\linewidth}
-      \Ifstr{\sprache}{german}{%
-        \Ifstr{\doctype}{MASTERARBEIT}{zur Erlangung des akademischen Grades\\\glqq{}Master of Science in Engineering\grqq{}\\im Studiengang}{%
-          \Ifstr{\doctype}{BACHELORARBEIT}{zur Erlangung des akademischen Grades\\\glqq{}Bachelor of Science in Engineering\grqq{}\\im Studiengang}{%
-            Im Studiengang}}}%
-      {%
-        \Ifstr{\doctype}{MASTERTHESIS}{Thesis submitted in fulfillment of the requirements for the degree of Master of Science in Engineering at the University of Applied Sciences Technikum Wien - Degree Program}{%
-          \Ifstr{\doctype}{BACHELORTHESIS}{Thesis submitted in fulfillment of the requirements for the degree of Bachelor of Science in Engineering at the University of Applied Sciences Technikum Wien - Degree Program}{%
-            In}}}
-      \@degreecourse\vspace{5pt}
-    \end{minipage}}
+    \hspace*{-34pt}\scalebox{1.5}{%
+      \begin{minipage}{0.72\linewidth}
+        \Ifstr{\sprache}{german}{%
+          \Ifstr{\doctype}{MASTERARBEIT}{zur Erlangung des akademischen Grades\\\glqq{}Master of Science in Engineering\grqq{}\\im Studiengang}{%
+            \Ifstr{\doctype}{BACHELORARBEIT}{zur Erlangung des akademischen Grades\\\glqq{}Bachelor of Science in Engineering\grqq{}\\im Studiengang}{%
+              \Ifstr{\doctype}{PROPOSAL}{Exposé für die Masterarbeit\\im Studiengang}{%
+                Im Studiengang}}}}%
+        {%
+          \Ifstr{\doctype}{MASTERTHESIS}{Thesis submitted in fulfillment of the requirements for the degree of Master of Science in Engineering at the University of Applied Sciences Technikum Wien - Degree Program}{%
+            \Ifstr{\doctype}{BACHELORTHESIS}{Thesis submitted in fulfillment of the requirements for the degree of Bachelor of Science in Engineering at the University of Applied Sciences Technikum Wien - Degree Program}{%
+              \Ifstr{\doctype}{THESIS PROPOSAL}{Proposal for Master's Thesis at the University of Applied Sciences Technikum Wien - Degree Program}{%
+                In}}}}
+        \@degreecourse\vspace{5pt}
+      \end{minipage}}
 
-  \vspace{54.7pt}
-  \hspace*{-30pt}\begin{minipage}{0.9625\linewidth}
-   \huge\bfseries\sffamily \@title
-\end{minipage}\vspace{47pt}
+    \vspace{54.7pt}
+    \hspace*{-30pt}\begin{minipage}{0.9625\linewidth}
+      \huge\bfseries\sffamily \@title
+    \end{minipage}\vspace{47pt}
 
-\Large
-\hspace*{-34pt}%
-\Ifstr{\sprache}{german}{Ausgef{\"u}hrt von:~}{By:~}%
-\begin{minipage}[t]{0.5\linewidth}\@author\end{minipage}%
-\vspace{0.33\baselineskip}%
+    \Large
+    \hspace*{-34pt}%
+    \Ifstr{\sprache}{german}{Ausgef{\"u}hrt von:~}{By:~}%
+    \begin{minipage}[t]{0.5\linewidth}\@author\end{minipage}%
+    \vspace{0.33\baselineskip}%
 
-\hspace*{-34pt}%
-\Ifstr{\sprache}{german}{Personenkennzeichen:~}{Student Number:~}%
-\begin{minipage}[t]{0.25\linewidth}\@studentnumber\end{minipage}%
-\vspace{\baselineskip}%
+    \hspace*{-34pt}%
+    \Ifstr{\sprache}{german}{Personenkennzeichen:~}{Student Number:~}%
+    \begin{minipage}[t]{0.25\linewidth}\@studentnumber\end{minipage}%
+    \vspace{\baselineskip}%
 
-\hspace*{-34pt}%
-\ifx\@secondsupervisor\@empty%
-\ifx\@supervisordesc\@empty%
-\Ifstr{\sprache}{german}{BegutachterIn:~}{Supervisor:~}%
-\else%
-\@supervisordesc:~%
-\fi%
-\begin{minipage}[t]{0.6\linewidth}%
-\bgroup\@supervisor\egroup%
-\end{minipage}\vspace{0.8\baselineskip}%
-\else%
-\ifx\@supervisordesc\@empty%
-\Ifstr{\sprache}{german}{\gdef\@supervisordesc{BegutachterInnen}}{\gdef\@supervisordesc{Supervisors}}%
-\fi%
-\ifx\@secondsupervisordesc\@empty%
-\gdef\@secondsupervisordesc{}%
-\fi%
-\newlength\TWLength%
-\newlength\TWLengthA%
-\newlength\TWLengthB%
-\settowidth\TWLengthA{\@supervisordesc:}%
-\settowidth\TWLengthB{\@secondsupervisordesc:}%
-\ifdim \TWLengthA>\TWLengthB%
-\setlength\TWLength\TWLengthA%
-\else%
-\setlength\TWLength\TWLengthB%
-\fi%
-\begin{minipage}[t]{\TWLength}%
-\@supervisordesc:\\%
-\ifx\@secondsupervisordesc\@empty%
-\else%
-\@secondsupervisordesc:%
-\fi%
-\end{minipage}~%
-\begin{minipage}[t]{0.6\linewidth}%
-\bgroup\@supervisor\egroup\\%
-\bgroup\@secondsupervisor\egroup%
-\end{minipage}\vspace{0.8\baselineskip}%
-\fi%
-\\\hspace*{-24pt}%
-\@place%
-\Ifstr{\sprache}{german}{, den~}{,~}\today%
+    \hspace*{-34pt}%
+    \ifx\@secondsupervisor\@empty%
+      \ifx\@supervisordesc\@empty%
+        \Ifstr{\sprache}{german}{BegutachterIn:~}{Supervisor:~}%
+      \else%
+        \@supervisordesc:~%
+      \fi%
+      \begin{minipage}[t]{0.6\linewidth}%
+        \bgroup\@supervisor\egroup%
+      \end{minipage}\vspace{0.8\baselineskip}%
+    \else%
+      \ifx\@supervisordesc\@empty%
+        \Ifstr{\sprache}{german}{\gdef\@supervisordesc{BegutachterInnen}}{\gdef\@supervisordesc{Supervisors}}%
+      \fi%
+      \ifx\@secondsupervisordesc\@empty%
+        \gdef\@secondsupervisordesc{}%
+      \fi%
+      \newlength\TWLength%
+      \newlength\TWLengthA%
+      \newlength\TWLengthB%
+      \settowidth\TWLengthA{\@supervisordesc:}%
+      \settowidth\TWLengthB{\@secondsupervisordesc:}%
+      \ifdim \TWLengthA>\TWLengthB%
+        \setlength\TWLength\TWLengthA%
+      \else%
+        \setlength\TWLength\TWLengthB%
+      \fi%
+      \begin{minipage}[t]{\TWLength}%
+        \@supervisordesc:\\%
+        \ifx\@secondsupervisordesc\@empty%
+        \else%
+          \@secondsupervisordesc:%
+        \fi%
+      \end{minipage}~%
+      \begin{minipage}[t]{0.6\linewidth}%
+        \bgroup\@supervisor\egroup\\%
+        \bgroup\@secondsupervisor\egroup%
+      \end{minipage}\vspace{0.8\baselineskip}%
+    \fi%
+    \\\hspace*{-24pt}%
+    \@place%
+    \Ifstr{\sprache}{german}{, den~}{,~}\today%
 
-\clearpage
-\color{black}\normalsize\mdseries
+    \clearpage
+    \color{black}\normalsize\mdseries
 
-\Ifstr{\doctype}{PROJEKTBERICHT}{
-\ifx\@kurzfassung\@empty
-\else\clearpage
-\chapter*{Kurzfassung}
-\@kurzfassung
-\ifx\@schlagworte\@empty
-\else\vfill\paragraph*{Schlagworte:}\@schlagworte
-\fi
-\fi}{}
-\Ifstr{\doctype}{PROJECT REPORT}{
-\ifx\@outline\@empty
-\else\clearpage
-\chapter*{Abstract}
-\@outline
-\ifx\@keywords\@empty
-\else\vfill\paragraph*{Keywords:}\@keywords
-\fi
-\fi}{}
+    \Ifstr{\doctype}{PROJEKTBERICHT}{
+      \ifx\@kurzfassung\@empty
+      \else\clearpage
+        \chapter*{Kurzfassung}
+        \@kurzfassung
+        \ifx\@schlagworte\@empty
+        \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+        \fi
+      \fi}{}
+    \Ifstr{\doctype}{PROJECT REPORT}{
+      \ifx\@outline\@empty
+      \else\clearpage
+        \chapter*{Abstract}
+        \@outline
+        \ifx\@keywords\@empty
+        \else\vfill\paragraph*{Keywords:}\@keywords
+        \fi
+      \fi}{}
 
-\Ifstr{\doctype}{SEMINARARBEIT}{
-\ifx\@kurzfassung\@empty
-\else\clearpage
-\chapter*{Kurzfassung}
-\@kurzfassung
-\ifx\@schlagworte\@empty
-\else\vfill\paragraph*{Schlagworte:}\@schlagworte
-\fi
-\fi
-\ifx\@outline\@empty
-\else\clearpage
-\chapter*{Abstract}
-\@outline
-\ifx\@keywords\@empty
-\else\vfill\paragraph*{Keywords:}\@keywords
-\fi
-\fi}{}
-\Ifstr{\doctype}{SEMINAR PAPER}{
-\ifx\@outline\@empty
-\else\clearpage
-\chapter*{Abstract}
-\@outline
-\ifx\@keywords\@empty
-\else\vfill\paragraph*{Keywords:}\@keywords
-\fi
-\fi
-\ifx\@kurzfassung\@empty
-\else\clearpage
-\chapter*{Kurzfassung}
-\@kurzfassung
-\ifx\@schlagworte\@empty
-\else\vfill\paragraph*{Schlagworte:}\@schlagworte
-\fi
-\fi}{}
+    \Ifstr{\doctype}{SEMINARARBEIT}{
+      \ifx\@kurzfassung\@empty
+      \else\clearpage
+        \chapter*{Kurzfassung}
+        \@kurzfassung
+        \ifx\@schlagworte\@empty
+        \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+        \fi
+      \fi
+      \ifx\@outline\@empty
+      \else\clearpage
+        \chapter*{Abstract}
+        \@outline
+        \ifx\@keywords\@empty
+        \else\vfill\paragraph*{Keywords:}\@keywords
+        \fi
+      \fi}{}
+    \Ifstr{\doctype}{SEMINAR PAPER}{
+      \ifx\@outline\@empty
+      \else\clearpage
+        \chapter*{Abstract}
+        \@outline
+        \ifx\@keywords\@empty
+        \else\vfill\paragraph*{Keywords:}\@keywords
+        \fi
+      \fi
+      \ifx\@kurzfassung\@empty
+      \else\clearpage
+        \chapter*{Kurzfassung}
+        \@kurzfassung
+        \ifx\@schlagworte\@empty
+        \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+        \fi
+      \fi}{}
 
-\Ifstr{\doctype}{BACHELORARBEIT}{
-  \chapter*{Eidesstattliche Erkl{\"a}rung}
+    \Ifstr{\doctype}{BACHELORARBEIT}{
+    \chapter*{Eidesstattliche Erkl{\"a}rung}
     \glqq Ich, als Autor / als Autorin und Urheber / Urheberin der
     vorliegenden Arbeit, best{\"a}tige mit meiner Unterschrift die
     Kenntnisnahme der einschl{\"a}gigen urheber- und hochschulrechtlichen
@@ -476,45 +483,45 @@ urlcolor=TWblue, urlbordercolor=white}
     dass die abgegebene Version jener im Uploadtool
     entspricht.\grqq\vspace{4\baselineskip}
 
-  \noindent \@place, \today\hspace{0.4\linewidth}Digitale Unterschrift
-\ifx\@kurzfassung\@empty
-\ifx\@schlagworte\@empty
-\else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
-\fi
-\else\clearpage
-\chapter*{Kurzfassung}
-\@kurzfassung
-\ifx\@schlagworte\@empty
-\else\vfill\paragraph*{Schlagworte:}\@schlagworte
-\fi
-\fi
+    \noindent \@place, \today\hspace{0.4\linewidth}Digitale Unterschrift
+    \ifx\@kurzfassung\@empty
+      \ifx\@schlagworte\@empty
+      \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
+      \fi
+    \else\clearpage
+      \chapter*{Kurzfassung}
+      \@kurzfassung
+      \ifx\@schlagworte\@empty
+      \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+      \fi
+    \fi
 
-\ifx\@outline\@empty
-\ifx\@keywords\@empty
-\else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
-\fi
-\else\clearpage
-\chapter*{Abstract}
-\@outline
-\ifx\@keywords\@empty
-\else\vfill\paragraph*{Keywords:}\@keywords
-\fi
-\fi
+    \ifx\@outline\@empty
+      \ifx\@keywords\@empty
+      \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
+      \fi
+    \else\clearpage
+      \chapter*{Abstract}
+      \@outline
+      \ifx\@keywords\@empty
+      \else\vfill\paragraph*{Keywords:}\@keywords
+      \fi
+    \fi
 
-\ifx\@acknowledgements\@empty
-\else\clearpage
-\chapter*{Danksagung}\@acknowledgements
-\fi
+    \ifx\@acknowledgements\@empty
+    \else\clearpage
+      \chapter*{Danksagung}\@acknowledgements
+    \fi
 
-\clearpage
-\tableofcontents
+    \clearpage
+    \tableofcontents
 
     \clearpage
     \setcounter{page}{1}}{
 
 
-\Ifstr{\doctype}{MASTERARBEIT}{
-  \chapter*{Eidesstattliche Erkl{\"a}rung}
+    \Ifstr{\doctype}{MASTERARBEIT}{
+    \chapter*{Eidesstattliche Erkl{\"a}rung}
     \glqq Ich, als Autor / als Autorin und Urheber / Urheberin der
     vorliegenden Arbeit, best{\"a}tige mit meiner Unterschrift die
     Kenntnisnahme der einschl{\"a}gigen urheber- und hochschulrechtlichen
@@ -536,165 +543,240 @@ urlcolor=TWblue, urlbordercolor=white}
     dass die abgegebene Version jener im Uploadtool
     entspricht.\grqq\vspace{4\baselineskip}
 
-  \noindent \@place, \today\hspace{0.4\linewidth}Digitale Unterschrift
-\ifx\@kurzfassung\@empty
-  \ifx\@schlagworte\@empty
-  \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
-  \fi
-\else\clearpage
-  \chapter*{Kurzfassung}
-  \@kurzfassung
-  \ifx\@schlagworte\@empty
-  \else\vfill\paragraph*{Schlagworte:}\@schlagworte
-  \fi
-\fi
+    \noindent \@place, \today\hspace{0.4\linewidth}Digitale Unterschrift
+    \ifx\@kurzfassung\@empty
+      \ifx\@schlagworte\@empty
+      \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
+      \fi
+    \else\clearpage
+      \chapter*{Kurzfassung}
+      \@kurzfassung
+      \ifx\@schlagworte\@empty
+      \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+      \fi
+    \fi
 
-\ifx\@outline\@empty
-  \ifx\@keywords\@empty
-  \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
-  \fi
-\else\clearpage
-  \chapter*{Abstract}
-  \@outline
-  \ifx\@keywords\@empty
-  \else\vfill\paragraph*{Keywords:}\@keywords
-  \fi
-\fi
+    \ifx\@outline\@empty
+      \ifx\@keywords\@empty
+      \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
+      \fi
+    \else\clearpage
+      \chapter*{Abstract}
+      \@outline
+      \ifx\@keywords\@empty
+      \else\vfill\paragraph*{Keywords:}\@keywords
+      \fi
+    \fi
 
-\ifx\@acknowledgements\@empty
-\else\clearpage
-  \chapter*{Danksagung}\@acknowledgements
-\fi
+    \ifx\@acknowledgements\@empty
+    \else\clearpage
+      \chapter*{Danksagung}\@acknowledgements
+    \fi
 
-\clearpage
-\tableofcontents
+    \clearpage
+    \tableofcontents
 
     \clearpage
     \setcounter{page}{1}}{
 
 
-\Ifstr{\doctype}{BACHELORTHESIS}{
-  \chapter*{Declaration}
-    ``As author and creator of this work to hand, I confirm with my
-    signature knowledge of the relevant copyright regulations
-    governed by higher education acts (see  Urheberrechtsgesetz
-    /Austrian copyright law as amended as well as the Statute on
-    Studies Act Provisions / Examination Regulations of the UAS
-    Technikum Wien as amended).\\[\baselineskip]
-    I hereby declare that I completed the present work independently
-    and that any ideas, whether written by others or by myself, have
-    been fully sourced and referenced. I am aware of any consequences
-    I may face on the part of the degree program director if there
-    should be evidence of missing autonomy and independence or
-    evidence of any intent to fraudulently achieve a pass mark for
-    this work (see Statute on Studies Act Provisions / Examination
-    Regulations of the UAS Technikum Wien as amended).\\[\baselineskip]
-    I further declare that up to this date I have not published the work to
-    hand nor have I presented it to another examination board in the same or
-    similar form. I affirm that the version submitted matches the version in
-    the upload tool.``\vspace{4\baselineskip}
+    \Ifstr{\doctype}{BACHELORTHESIS}{
+      \chapter*{Declaration}
+      ``As author and creator of this work to hand, I confirm with my
+      signature knowledge of the relevant copyright regulations
+      governed by higher education acts (see  Urheberrechtsgesetz
+      /Austrian copyright law as amended as well as the Statute on
+      Studies Act Provisions / Examination Regulations of the UAS
+      Technikum Wien as amended).\\[\baselineskip]
+      I hereby declare that I completed the present work independently
+      and that any ideas, whether written by others or by myself, have
+      been fully sourced and referenced. I am aware of any consequences
+      I may face on the part of the degree program director if there
+      should be evidence of missing autonomy and independence or
+      evidence of any intent to fraudulently achieve a pass mark for
+      this work (see Statute on Studies Act Provisions / Examination
+      Regulations of the UAS Technikum Wien as amended).\\[\baselineskip]
+      I further declare that up to this date I have not published the work to
+      hand nor have I presented it to another examination board in the same or
+      similar form. I affirm that the version submitted matches the version in
+      the upload tool.``\vspace{4\baselineskip}
 
-  \noindent \@place, \today\hspace{0.4\linewidth}Digital Signature
-\ifx\@kurzfassung\@empty
-  \ifx\@schlagworte\@empty
-  \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
-  \fi
-\else\clearpage
-  \chapter*{Kurzfassung}
-  \@kurzfassung
-  \ifx\@schlagworte\@empty
-  \else\vfill\paragraph*{Schlagworte:}\@schlagworte
-  \fi
-\fi
+      \noindent \@place, \today\hspace{0.4\linewidth}Digital Signature
+      \ifx\@kurzfassung\@empty
+        \ifx\@schlagworte\@empty
+        \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
+        \fi
+      \else\clearpage
+        \chapter*{Kurzfassung}
+        \@kurzfassung
+        \ifx\@schlagworte\@empty
+        \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+        \fi
+      \fi
 
-\ifx\@outline\@empty
-  \ifx\@keywords\@empty
-  \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
-  \fi
-\else\clearpage
-  \chapter*{Abstract}
-  \@outline
-  \ifx\@keywords\@empty
-  \else\vfill\paragraph*{Keywords:}\@keywords
-  \fi
-\fi
+      \ifx\@outline\@empty
+        \ifx\@keywords\@empty
+        \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
+        \fi
+      \else\clearpage
+        \chapter*{Abstract}
+        \@outline
+        \ifx\@keywords\@empty
+        \else\vfill\paragraph*{Keywords:}\@keywords
+        \fi
+      \fi
 
-\ifx\@acknowledgements\@empty
-\else\clearpage
-  \chapter*{Acknowledgements}\@acknowledgements
-\fi
+      \ifx\@acknowledgements\@empty
+      \else\clearpage
+        \chapter*{Acknowledgements}\@acknowledgements
+      \fi
 
-\clearpage
-\tableofcontents
+      \clearpage
+      \tableofcontents
 
-    \clearpage
-    \setcounter{page}{1}}{
+      \clearpage
+      \setcounter{page}{1}}{
 
 
-\Ifstr{\doctype}{MASTERTHESIS}{
-  \chapter*{Declaration}
-    ``As author and creator of this work to hand, I confirm with my
-    signature knowledge of the relevant copyright regulations
-    governed by higher education acts (see  Urheberrechtsgesetz
-    /Austrian copyright law as amended as well as the Statute on
-    Studies Act Provisions / Examination Regulations of the UAS
-    Technikum Wien as amended).\\[\baselineskip]
-    I hereby declare that I completed the present work independently
-    and that any ideas, whether written by others or by myself, have
-    been fully sourced and referenced. I am aware of any consequences
-    I may face on the part of the degree program director if there
-    should be evidence of missing autonomy and independence or
-    evidence of any intent to fraudulently achieve a pass mark for
-    this work (see Statute on Studies Act Provisions / Examination
-    Regulations of the UAS Technikum Wien as amended).\\[\baselineskip]
-    I further declare that up to this date I have not published the work to
-    hand nor have I presented it to another examination board in the same or
-    similar form. I affirm that the version submitted matches the version in
-    the upload tool.``\vspace{4\baselineskip}
+      \Ifstr{\doctype}{MASTERTHESIS}{
+        \chapter*{Declaration}
+        ``As author and creator of this work to hand, I confirm with my
+        signature knowledge of the relevant copyright regulations
+        governed by higher education acts (see  Urheberrechtsgesetz
+        /Austrian copyright law as amended as well as the Statute on
+        Studies Act Provisions / Examination Regulations of the UAS
+        Technikum Wien as amended).\\[\baselineskip]
+        I hereby declare that I completed the present work independently
+        and that any ideas, whether written by others or by myself, have
+        been fully sourced and referenced. I am aware of any consequences
+        I may face on the part of the degree program director if there
+        should be evidence of missing autonomy and independence or
+        evidence of any intent to fraudulently achieve a pass mark for
+        this work (see Statute on Studies Act Provisions / Examination
+        Regulations of the UAS Technikum Wien as amended).\\[\baselineskip]
+        I further declare that up to this date I have not published the work to
+        hand nor have I presented it to another examination board in the same or
+        similar form. I affirm that the version submitted matches the version in
+        the upload tool.``\vspace{4\baselineskip}
 
-  \noindent \@place, \today\hspace{0.4\linewidth}Digital Signature
-  \ifx\@kurzfassung\@empty
-  \ifx\@schlagworte\@empty
-  \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
-  \fi
-\else\clearpage
-  \chapter*{Kurzfassung}
-  \@kurzfassung
-  \ifx\@schlagworte\@empty
-  \else\vfill\paragraph*{Schlagworte:}\@schlagworte
-  \fi
-\fi
+        \noindent \@place, \today\hspace{0.4\linewidth}Digital Signature
+        \ifx\@kurzfassung\@empty
+          \ifx\@schlagworte\@empty
+          \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
+          \fi
+        \else\clearpage
+          \chapter*{Kurzfassung}
+          \@kurzfassung
+          \ifx\@schlagworte\@empty
+          \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+          \fi
+        \fi
 
-\ifx\@outline\@empty
-  \ifx\@keywords\@empty
-  \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
-  \fi
-\else\clearpage
-  \chapter*{Abstract}
-  \@outline
-  \ifx\@keywords\@empty
-  \else\vfill\paragraph*{Keywords:}\@keywords
-  \fi
-\fi
+        \ifx\@outline\@empty
+          \ifx\@keywords\@empty
+          \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
+          \fi
+        \else\clearpage
+          \chapter*{Abstract}
+          \@outline
+          \ifx\@keywords\@empty
+          \else\vfill\paragraph*{Keywords:}\@keywords
+          \fi
+        \fi
 
-\ifx\@acknowledgements\@empty
-\else\clearpage
-  \chapter*{Acknowledgements}\@acknowledgements
-\fi
+        \ifx\@acknowledgements\@empty
+        \else\clearpage
+          \chapter*{Acknowledgements}\@acknowledgements
+        \fi
 
-\clearpage
-\tableofcontents
+        \clearpage
+        \tableofcontents
 
-    \clearpage
-    \setcounter{page}{1}}{
+        \clearpage
+        \setcounter{page}{1}}{
 
-\clearpage
-\tableofcontents
 
-    \clearpage
-    \setcounter{page}{1}}}}}}
+        \Ifstr{\doctype}{THESIS PROPOSAL}{
+          % Proposal: No declaration, just abstracts and TOC
+          \ifx\@kurzfassung\@empty
+            \ifx\@schlagworte\@empty
+            \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
+            \fi
+          \else\clearpage
+            \chapter*{Kurzfassung}
+            \@kurzfassung
+            \ifx\@schlagworte\@empty
+            \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+            \fi
+          \fi
+
+          \ifx\@outline\@empty
+            \ifx\@keywords\@empty
+            \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
+            \fi
+          \else\clearpage
+            \chapter*{Abstract}
+            \@outline
+            \ifx\@keywords\@empty
+            \else\vfill\paragraph*{Keywords:}\@keywords
+            \fi
+          \fi
+
+          \ifx\@acknowledgements\@empty
+          \else\clearpage
+            \chapter*{Acknowledgements}\@acknowledgements
+          \fi
+
+          \clearpage
+          \tableofcontents
+
+          \clearpage
+          \setcounter{page}{1}}{
+
+          \Ifstr{\doctype}{PROPOSAL}{
+            % Proposal (German): No declaration, just abstracts and TOC
+            \ifx\@kurzfassung\@empty
+              \ifx\@schlagworte\@empty
+              \else\clearpage\null\vfill\paragraph*{Schlagworte:}\@schlagworte
+              \fi
+            \else\clearpage
+              \chapter*{Kurzfassung}
+              \@kurzfassung
+              \ifx\@schlagworte\@empty
+              \else\vfill\paragraph*{Schlagworte:}\@schlagworte
+              \fi
+            \fi
+
+            \ifx\@outline\@empty
+              \ifx\@keywords\@empty
+              \else\clearpage\null\vfill\paragraph*{Keywords:}\@keywords
+              \fi
+            \else\clearpage
+              \chapter*{Abstract}
+              \@outline
+              \ifx\@keywords\@empty
+              \else\vfill\paragraph*{Keywords:}\@keywords
+              \fi
+            \fi
+
+            \ifx\@acknowledgements\@empty
+            \else\clearpage
+              \chapter*{Danksagung}\@acknowledgements
+            \fi
+
+            \clearpage
+            \tableofcontents
+
+            \clearpage
+            \setcounter{page}{1}}{
+
+            \clearpage
+            \tableofcontents
+
+            \clearpage
+            \setcounter{page}{1}}}}}}}}
   \end{titlepage}
- }
+}
 
 \Ifstr{\doctype}{}
 {
@@ -706,7 +788,7 @@ urlcolor=TWblue, urlbordercolor=white}
     \LARGE\raisebox{0.3ex}{$\centerdot$}\hspace{-5pt}}
 }{}
 %% Verfasser der Änderung: \VCAuthor
-\endinput 
+\endinput
 \endinput
 %%
 %% End of file `twbook.cls'.
