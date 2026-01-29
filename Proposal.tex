@@ -24,7 +24,6 @@
 \usepackage{subcaption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
 
 %
@@ -80,7 +79,7 @@ Game balancing in action combat games is notoriously difficult \cite{yannakakisR
   \item \textbf{Iteration speed}: Each balance change requires new playtesting sessions, slowing development
 \end{enumerate}
 
-The game industry has recognized automated playtesting as a potential solution \cite{gordilloImprovingPlaytestingCoverage2021, ferdousAgentBasedTesting3D2022}. Deep reinforcement learning (DRL) has shown promise in learning complex sequential decision-making tasks, including playing video games at superhuman levels \cite{ruppSimulationDrivenBalancingCompetitive2024}. However, applying DRL to action combat games for \emph{balancing} rather than merely \emph{winning} presents unique challenges.
+The game industry has recognized automated playtesting as a potential solution \cite{gordilloImprovingPlaytestingCoverage2021, ferdousAgentBasedTesting3D2022}. Deep reinforcement learning (DRL) has shown promise in learning complex sequential decision-making tasks, including playing video games at superhuman levels \cite{vinyalsGrandmasterLevelStarCraft2019, openaiDota2Large2019}. However, applying DRL to action combat games for \emph{balancing} rather than merely \emph{winning} presents unique challenges.
 
 \section{Relation to Master Thesis Topic}
 
@@ -88,10 +87,10 @@ This research sits at the intersection of several active areas in artificial int
 
 \begin{itemize}
   \item \textbf{Deep Reinforcement Learning}: Applying state-of-the-art algorithms (PPO, SAC) to complex continuous control tasks
-  \item \textbf{Curriculum Learning}: Structuring training to progressively increase task difficulty \cite{CurriculumLearning2025}
-  \item \textbf{Reward Engineering}: Designing reward functions that produce desired agent behaviors \cite{RewardShapingMastering}
+  \item \textbf{Curriculum Learning}: Structuring training to progressively increase task difficulty \cite{bengioCurriculumLearning2009}
+  \item \textbf{Reward Engineering}: Designing reward functions that produce desired agent behaviors \cite{ngPolicyInvarianceReward1999}
   \item \textbf{Game AI and Testing}: Contributing to the growing field of AI-assisted game development \cite{lepelletierdewoillemontAutomatedPlayTestingRL2022}
-  \item \textbf{MLOps for RL}: Exploring systematic approaches to hyperparameter optimization for reinforcement learning systems \cite{asc686f61MLFlowReinforcementLearning2025}
+  \item \textbf{MLOps for RL}: Exploring systematic approaches to hyperparameter optimization for reinforcement learning systems \cite{zahariaAcceleratingMachineLearning, RstudioMlfloworiginal2023}
 \end{itemize}
 
 \section{Importance and Novelty}
@@ -131,17 +130,17 @@ This question encompasses several sub-questions:
 
 \section{Reinforcement Learning for Game Testing}
 
-The application of reinforcement learning to game testing has gained significant attention in recent years. Bergdahl et al. demonstrated that deep reinforcement learning can augment automated game testing by learning to explore game mechanics and detect bugs without explicit scripting \cite{gordilloImprovingPlaytestingCoverage2021}. Their work on curiosity-driven exploration showed that RL agents can achieve meaningful test coverage in complex 3D environments.
+The application of reinforcement learning to game testing has gained significant attention in recent years. Gordillo et al. demonstrated that deep reinforcement learning can augment automated game testing by learning to explore game mechanics and detect bugs without explicit scripting \cite{gordilloImprovingPlaytestingCoverage2021}. Their work on curiosity-driven exploration showed that RL agents can achieve meaningful test coverage in complex 3D environments.
 
 Ferdous et al. \cite{ferdousAgentBasedTesting3D2022} presented an approach for agent-based testing of 3D games using curiosity as a motivating factor. Their results provide preliminary evidence that RL can be adopted for automated testing, though they note challenges with complex game mechanics.
 
-The Wuji framework represents a significant advancement, combining evolutionary algorithms with deep reinforcement learning for combat game testing. Zheng et al. demonstrated that this hybrid approach could discover bugs in commercial games by balancing between task completion and state space exploration. Their multi-objective optimization approach is particularly relevant to our work.
+The Wuji framework represents a significant advancement, combining evolutionary algorithms with deep reinforcement learning for combat game testing \cite{zhengWujiAutomaticOnline2019}. Zheng et al. demonstrated that this hybrid approach could discover bugs in commercial games by balancing between task completion and state space exploration. Their multi-objective optimization approach is particularly relevant to our work.
 
 \section{Game Balancing with Machine Learning}
 
 Rupp et al. \cite{ruppSimulationDrivenBalancingCompetitive2024} proposed simulation-driven balancing using reinforcement learning within the PCGRL framework. Their architecture separates level generation from balancing, with a reward model based on simulation outcomes. While focused on tile-based competitive games, their methodology of using repeated simulations to assess balance informs our approach.
 
-Noblega et al. \cite{noblegaAdaptiveDeepReinforcement2025} explored adaptive deep reinforcement game balancing, proposing reward functions based on balancing constants. Their work demonstrates that RL agents can maintain balance while adapting to different player skill levels.
+Noblega et al. \cite{noblegaAdaptiveDeepReinforcement2019} explored adaptive deep reinforcement game balancing, proposing reward functions based on balancing constants. Their work demonstrates that RL agents can maintain balance while adapting to different player skill levels.
 
 Yannakakis and Hallam \cite{yannakakisRealTimeGameAdaptation2009} established foundational work on real-time game adaptation for player satisfaction, using neural networks to model player preferences and adapt game parameters accordingly.
 
@@ -151,7 +150,7 @@ Le Pelletier De Woillemont et al. \cite{lepelletierdewoillemontAutomatedPlayTest
 
 \section{Curriculum Learning in Reinforcement Learning}
 
-Curriculum learning \cite{CurriculumLearning2025} structures training by progressively increasing task difficulty. In RL contexts, this has proven effective for complex tasks where naive training fails to converge. OpenAI's work on Dota 2 and DeepMind's AlphaStar both employed curriculum strategies to achieve superhuman performance in complex games.
+Curriculum learning \cite{bengioCurriculumLearning2009} structures training by progressively increasing task difficulty. In RL contexts, this has proven effective for complex tasks where naive training fails to converge. OpenAI's work on Dota 2 \cite{openaiDota2Large2019} and DeepMind's AlphaStar \cite{vinyalsGrandmasterLevelStarCraft2019} both employed curriculum strategies to achieve superhuman performance in complex games.
 
 For game testing specifically, curriculum learning offers a path to training agents that can handle the full complexity of combat systems by first mastering simpler sub-tasks.
 
@@ -307,7 +306,7 @@ Weight optimization will explore:
 Experiment tracking and hyperparameter optimization:
 
 \begin{itemize}
-  \item \textbf{MLflow} \cite{asc686f61MLFlowReinforcementLearning2025}: Track training runs, log metrics, version models
+  \item \textbf{MLflow} \cite{zahariaAcceleratingMachineLearning}: Track training runs, log metrics, version models
   \item \textbf{Weights \& Biases}: Visualize training progress, compare experiments
   \item \textbf{Optuna}: Automated hyperparameter search for reward weights and network architecture
 \end{itemize}
