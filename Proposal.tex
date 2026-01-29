@@ -37,15 +37,21 @@
 
 %---------------------------------------------------------------Abstract
 \outline{%
-This thesis investigates the application of deep reinforcement learning (DRL) agents for automated playtesting and game balancing in the action combat dungeon crawler \emph{Shattered Bonds}, developed in Unreal Engine 5. 
+This thesis investigates the application of \ac{DRL} agents for automated playtesting and game balancing in the action combat dungeon crawler \emph{Shattered Bonds}, developed in \ac{UE5}. 
 The research addresses the challenge of efficiently testing and balancing complex real-time combat mechanics—including movement, attack timing, ability usage, and defensive actions—without relying solely on expensive and time-consuming human playtesting. 
 We propose a curriculum learning approach combined with carefully designed reward shaping to train agents capable of exhibiting human-like combat behaviors. 
 The trained agents will generate telemetry data comparable to human playtesters, enabling rapid iteration on game balance parameters such as enemy difficulty, animation timing, and player survivability. 
-MLOps practices will be explored for hyperparameter optimization of the reward function design. 
-Expected outcomes include a reproducible framework for RL-based playtesting in Unreal Engine 5, quantitative metrics for difficulty assessment, and empirical comparison between agent and human playtesting data.
+\ac{MLOps} practices will be explored for hyperparameter optimization of the reward function design.
+Expected outcomes include a reproducible framework for \ac{RL}-based playtesting in \ac{UE5}, quantitative metrics for difficulty assessment, and empirical comparison between agent and human playtesting data.
 }
 
 \keywords{Reinforcement Learning, Automated Playtesting, Game Balancing, Curriculum Learning, Reward Shaping, Unreal Engine 5, Deep Learning, Action Combat Games}
+
+% AI Tools Documentation
+\aitoolentry{Claude (Anthropic)}{Writing assistance and text drafting}{Used for drafting and refining proposal sections including abstract, motivation, and methodology descriptions. All content reviewed and edited by author.}
+\aitoolentry{Claude (Anthropic)}{Literature review structuring}{Assisted in organizing and summarizing key findings from academic sources. Citation accuracy verified manually.}
+\aitoolentry{Claude (Anthropic)}{LaTeX formatting and document structure}{Used for LaTeX syntax assistance, table formatting, and TikZ figure generation. Code reviewed and adapted by author.}
+\aitoolentry{Claude (Anthropic)}{Proofreading and revision}{Used for grammar checking, consistency review, and citation format verification throughout the document.}
 
 %---------------------------------------------------------------BEGIN
 \begin{document}
@@ -79,18 +85,18 @@ Game balancing in action combat games is notoriously difficult \cite{yannakakisR
   \item \textbf{Iteration speed}: Each balance change requires new playtesting sessions, slowing development
 \end{enumerate}
 
-The game industry has recognized automated playtesting as a potential solution \cite{gordilloImprovingPlaytestingCoverage2021, ferdousAgentBasedTesting3D2022}. Deep reinforcement learning (DRL) has shown promise in learning complex sequential decision-making tasks, including playing video games at superhuman levels \cite{vinyalsGrandmasterLevelStarCraft2019, openaiDota2Large2019}. However, applying DRL to action combat games for \emph{balancing} rather than merely \emph{winning} presents unique challenges.
+The game industry has recognized automated playtesting as a potential solution \cite{gordilloImprovingPlaytestingCoverage2021, ferdousAgentBasedTesting3D2022}. \ac{DRL} has shown promise in learning complex sequential decision-making tasks, including playing video games at superhuman levels \cite{vinyalsGrandmasterLevelStarCraft2019, openaiDota2Large2019}. However, applying \ac{DRL} to action combat games for \emph{balancing} rather than merely \emph{winning} presents unique challenges.
 
 \section{Relation to Master Thesis Topic}
 
 This research sits at the intersection of several active areas in artificial intelligence and game development:
 
 \begin{itemize}
-  \item \textbf{Deep Reinforcement Learning}: Applying state-of-the-art algorithms (PPO, SAC) to complex continuous control tasks
+  \item \textbf{Deep Reinforcement Learning}: Applying state-of-the-art algorithms (\ac{PPO}, \ac{SAC}) to complex continuous control tasks
   \item \textbf{Curriculum Learning}: Structuring training to progressively increase task difficulty \cite{bengioCurriculumLearning2009}
   \item \textbf{Reward Engineering}: Designing reward functions that produce desired agent behaviors \cite{ngPolicyInvarianceReward1999}
   \item \textbf{Game AI and Testing}: Contributing to the growing field of AI-assisted game development \cite{lepelletierdewoillemontAutomatedPlayTestingRL2022}
-  \item \textbf{MLOps for RL}: Exploring systematic approaches to hyperparameter optimization for reinforcement learning systems \cite{zahariaAcceleratingMachineLearning, RstudioMlfloworiginal2023}
+  \item \textbf{\ac{MLOps} for \ac{RL}}: Exploring systematic approaches to hyperparameter optimization for reinforcement learning systems \cite{zahariaAcceleratingMachineLearning, RstudioMlfloworiginal2023}
 \end{itemize}
 
 \section{Importance and Novelty}
@@ -98,11 +104,11 @@ This research sits at the intersection of several active areas in artificial int
 While reinforcement learning has been applied to game testing \cite{ferdousAgentBasedTesting3D2022} and competitive game balancing \cite{ruppSimulationDrivenBalancingCompetitive2024}, several aspects make this research novel:
 
 \begin{enumerate}
-  \item \textbf{Real-time 3D combat}: Most RL playtesting research focuses on simpler 2D games or turn-based systems. Action combat in 3D presents significantly higher complexity in state and action spaces.
+  \item \textbf{Real-time 3D combat}: Most \ac{RL} playtesting research focuses on simpler 2D games or turn-based systems. Action combat in 3D presents significantly higher complexity in state and action spaces.
 
   \item \textbf{Multi-objective behavior}: The agent must learn not just to win, but to exhibit varied play styles that approximate human behavior for meaningful balance feedback.
 
-  \item \textbf{Unreal Engine 5 integration}: Establishing a reproducible framework for RL training within UE5, building on recent developments like Learning Agents \cite{AlanLaboratoryUnrealMLAgents2025}.
+  \item \textbf{\ac{UE5} integration}: Establishing a reproducible framework for \ac{RL} training within \ac{UE5}, building on recent developments like Learning Agents \cite{AlanLaboratoryUnrealMLAgents2025}.
 
   \item \textbf{Production game context}: Unlike most academic work using simplified environments, this research operates on an actual commercial game in active development.
 
@@ -130,9 +136,9 @@ This question encompasses several sub-questions:
 
 \section{Reinforcement Learning for Game Testing}
 
-The application of reinforcement learning to game testing has gained significant attention in recent years. Gordillo et al. demonstrated that deep reinforcement learning can augment automated game testing by learning to explore game mechanics and detect bugs without explicit scripting \cite{gordilloImprovingPlaytestingCoverage2021}. Their work on curiosity-driven exploration showed that RL agents can achieve meaningful test coverage in complex 3D environments.
+The application of reinforcement learning to game testing has gained significant attention in recent years. Gordillo et al. demonstrated that deep reinforcement learning can augment automated game testing by learning to explore game mechanics and detect bugs without explicit scripting \cite{gordilloImprovingPlaytestingCoverage2021}. Their work on curiosity-driven exploration showed that \ac{RL} agents can achieve meaningful test coverage in complex 3D environments.
 
-Ferdous et al. \cite{ferdousAgentBasedTesting3D2022} presented an approach for agent-based testing of 3D games using curiosity as a motivating factor. Their results provide preliminary evidence that RL can be adopted for automated testing, though they note challenges with complex game mechanics.
+Ferdous et al. \cite{ferdousAgentBasedTesting3D2022} presented an approach for agent-based testing of 3D games using curiosity as a motivating factor. Their results provide preliminary evidence that \ac{RL} can be adopted for automated testing, though they note challenges with complex game mechanics.
 
 The Wuji framework represents a significant advancement, combining evolutionary algorithms with deep reinforcement learning for combat game testing \cite{zhengWujiAutomaticOnline2019}. Zheng et al. demonstrated that this hybrid approach could discover bugs in commercial games by balancing between task completion and state space exploration. Their multi-objective optimization approach is particularly relevant to our work.
 
@@ -140,7 +146,7 @@ The Wuji framework represents a significant advancement, combining evolutionary 
 
 Rupp et al. \cite{ruppSimulationDrivenBalancingCompetitive2024} proposed simulation-driven balancing using reinforcement learning within the PCGRL framework. Their architecture separates level generation from balancing, with a reward model based on simulation outcomes. While focused on tile-based competitive games, their methodology of using repeated simulations to assess balance informs our approach.
 
-Noblega et al. \cite{noblegaAdaptiveDeepReinforcement2019} explored adaptive deep reinforcement game balancing, proposing reward functions based on balancing constants. Their work demonstrates that RL agents can maintain balance while adapting to different player skill levels.
+Noblega et al. \cite{noblegaAdaptiveDeepReinforcement2019} explored adaptive deep reinforcement game balancing, proposing reward functions based on balancing constants. Their work demonstrates that \ac{RL} agents can maintain balance while adapting to different player skill levels.
 
 Yannakakis and Hallam \cite{yannakakisRealTimeGameAdaptation2009} established foundational work on real-time game adaptation for player satisfaction, using neural networks to model player preferences and adapt game parameters accordingly.
 
@@ -150,15 +156,15 @@ Le Pelletier De Woillemont et al. \cite{lepelletierdewoillemontAutomatedPlayTest
 
 \section{Curriculum Learning in Reinforcement Learning}
 
-Curriculum learning \cite{bengioCurriculumLearning2009} structures training by progressively increasing task difficulty. In RL contexts, this has proven effective for complex tasks where naive training fails to converge. OpenAI's work on Dota 2 \cite{openaiDota2Large2019} and DeepMind's AlphaStar \cite{vinyalsGrandmasterLevelStarCraft2019} both employed curriculum strategies to achieve superhuman performance in complex games.
+Curriculum learning \cite{bengioCurriculumLearning2009} structures training by progressively increasing task difficulty. In \ac{RL} contexts, this has proven effective for complex tasks where naive training fails to converge. OpenAI's work on Dota 2 \cite{openaiDota2Large2019} and DeepMind's AlphaStar \cite{vinyalsGrandmasterLevelStarCraft2019} both employed curriculum strategies to achieve superhuman performance in complex games.
 
 For game testing specifically, curriculum learning offers a path to training agents that can handle the full complexity of combat systems by first mastering simpler sub-tasks.
 
 \section{Multi-Agent Reinforcement Learning}
 
-Buşoniu et al. \cite{busoniuMultiagentReinforcementLearning2010} provide a comprehensive overview of multi-agent RL, discussing cooperative, competitive, and mixed scenarios. Tan's foundational work \cite{tanMultiAgentReinforcementLearning1993} on independent versus cooperative agents established key principles for multi-agent systems.
+Buşoniu et al. \cite{busoniuMultiagentReinforcementLearning2010} provide a comprehensive overview of \ac{MARL}, discussing cooperative, competitive, and mixed scenarios. Tan's foundational work \cite{tanMultiAgentReinforcementLearning1993} on independent versus cooperative agents established key principles for multi-agent systems.
 
-Papoudakis et al. \cite{papoudakisDealingNonStationarityMultiAgent2019} address the non-stationarity problem in multi-agent deep RL, surveying methods from centralized training to meta-learning. These insights are relevant if we pursue a multi-agent architecture where different agents specialize in different combat aspects.
+Papoudakis et al. \cite{papoudakisDealingNonStationarityMultiAgent2019} address the non-stationarity problem in multi-agent deep \ac{RL}, surveying methods from centralized training to meta-learning. These insights are relevant if we pursue a multi-agent architecture where different agents specialize in different combat aspects.
 
 \section{Research Gap}
 
@@ -167,11 +173,11 @@ Despite significant progress, several gaps remain that this thesis addresses:
 \begin{enumerate}
   \item \textbf{Real-time 3D action combat}: Most work focuses on turn-based, 2D, or strategy games rather than real-time 3D combat with precise timing requirements.
 
-  \item \textbf{Balance-focused rather than win-focused}: Existing RL game agents optimize for winning; our work requires agents that produce useful balance feedback.
+  \item \textbf{Balance-focused rather than win-focused}: Existing \ac{RL} game agents optimize for winning; our work requires agents that produce useful balance feedback.
 
-  \item \textbf{Unreal Engine 5 integration}: Limited academic work exists on RL integration with UE5 for production games.
+  \item \textbf{\ac{UE5} integration}: Limited academic work exists on \ac{RL} integration with \ac{UE5} for production games.
 
-  \item \textbf{Comparative validation}: Few studies compare RL-generated telemetry directly with human playtester data using statistical methods.
+  \item \textbf{Comparative validation}: Few studies compare \ac{RL}-generated telemetry directly with human playtester data using statistical methods.
 \end{enumerate}
 
 %---------------------------------------------------------------Proposed Methods
@@ -183,7 +189,7 @@ The proposed methodology consists of four main components:
 
 \begin{enumerate}
   \item \textbf{Environment Design}: Creating training environments within Unreal Engine 5
-  \item \textbf{Agent Architecture}: Designing the RL agent(s) for combat control
+  \item \textbf{Agent Architecture}: Designing the \ac{RL} agent(s) for combat control
   \item \textbf{Training Pipeline}: Implementing curriculum learning and reward shaping
   \item \textbf{Evaluation Framework}: Collecting and analyzing telemetry data
 \end{enumerate}
@@ -234,7 +240,7 @@ Custom training environments will be created in Unreal Engine 5:
 
 Integration options under consideration:
 \begin{itemize}
-  \item \textbf{UE5 Learning Agents}: Epic's official ML plugin for reinforcement and imitation learning
+  \item \textbf{\ac{UE5} Learning Agents}: Epic's official ML plugin for reinforcement and imitation learning
   \item \textbf{Unreal ML-Agents}: Community port of Unity ML-Agents \cite{AlanLaboratoryUnrealMLAgents2025}
   \item \textbf{Custom Python bridge}: Direct socket communication for maximum flexibility
 \end{itemize}
@@ -246,7 +252,7 @@ The primary approach uses a single agent controlling all combat aspects. A secon
 \textbf{Single Agent (Primary):}
 \begin{itemize}
   \item Policy network: Actor-critic architecture with shared feature extraction
-  \item Algorithm: Proximal Policy Optimization (PPO) or Soft Actor-Critic (SAC)
+  \item Algorithm: \ac{PPO} or \ac{SAC}
   \item Observation space: Vector encoding of game state (position, health, enemies, cooldowns)
   \item Action space: Continuous (movement) + discrete (combat actions) hybrid
 \end{itemize}
@@ -301,7 +307,7 @@ Weight optimization will explore:
   \item Hyperparameter optimization (grid search, Bayesian optimization)
 \end{itemize}
 
-\subsection{MLOps Integration}
+\subsection{\ac{MLOps} Integration}
 
 Experiment tracking and hyperparameter optimization:
 
@@ -319,23 +325,23 @@ Experiment tracking and hyperparameter optimization:
   \label{tab:milestones}
   \begin{tabular}{@{}clp{6cm}c@{}}
     \toprule
-    \textbf{MS} & \textbf{Phase} & \textbf{Deliverable}                                                       & \textbf{Target} \\
+    \textbf{MS} & \textbf{Phase} & \textbf{Deliverable}                                                            & \textbf{Target} \\
     \midrule
-    1           & Setup          & UE5-Python communication established, basic agent training loop functional & Month 1         \\
+    1           & Setup          & \ac{UE5}-Python communication established, basic agent training loop functional & Month 1         \\
     \addlinespace
-    2           & Environment    & Training arenas created, telemetry pipeline integrated with Firestore      & Month 1         \\
+    2           & Environment    & Training arenas created, telemetry pipeline integrated with Firestore           & Month 1         \\
     \addlinespace
-    3           & Curriculum     & Stages 1--4 implemented, agent learns basic movement and combat            & Month 2         \\
+    3           & Curriculum     & Stages 1--4 implemented, agent learns basic movement and combat                 & Month 2         \\
     \addlinespace
-    4           & Full Training  & All curriculum stages complete, agent completes full encounters            & Month 2         \\
+    4           & Full Training  & All curriculum stages complete, agent completes full encounters                 & Month 2         \\
     \addlinespace
-    5           & Human Data     & Controlled playtesting sessions conducted, human baseline established      & Month 3         \\
+    5           & Human Data     & Controlled playtesting sessions conducted, human baseline established           & Month 3         \\
     \addlinespace
-    6           & Analysis       & Statistical comparison complete, metrics validated                         & Month 3         \\
+    6           & Analysis       & Statistical comparison complete, metrics validated                              & Month 3         \\
     \addlinespace
-    7           & Optimization   & Reward shaping optimized, MLOps pipeline functional                        & Month 4         \\
+    7           & Optimization   & Reward shaping optimized, \ac{MLOps} pipeline functional                        & Month 4         \\
     \addlinespace
-    8           & Thesis         & Written thesis submitted                                                   & Month 4         \\
+    8           & Thesis         & Written thesis submitted                                                        & Month 4         \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -397,7 +403,7 @@ Metrics specifically for assessing game balance:
         grid=major,
         legend pos=south east,
       ]
-      % Dummy data showing typical RL training curve
+      % Dummy data showing typical \ac{RL} training curve
       \addplot[blue, thick, smooth] coordinates {
           (0, -50) (50, -30) (100, -10) (150, 20) (200, 45)
           (250, 60) (300, 70) (350, 75) (400, 78) (450, 80) (500, 81)
@@ -441,12 +447,14 @@ Metrics specifically for assessing game balance:
       ]
       \addplot[fill=blue!60] coordinates {(E1, 45) (E2, 62) (E3, 38) (E4, 85) (E5, 55)};
       \addplot[fill=orange!60] coordinates {(E1, 42) (E2, 58) (E3, 41) (E4, 78) (E5, 52)};
-      \legend{Human, RL Agent}
+      \legend{Human, \ac{RL} Agent}
     \end{axis}
   \end{tikzpicture}
   \caption{Example comparison of completion times across encounters}
   \label{fig:completion_comparison}
 \end{figure}
+
+\newpage
 
 \subsection{Difficulty Spike Detection}
 
@@ -505,12 +513,14 @@ Metrics specifically for assessing game balance:
           (0.5, 0) (0.8, 1) (1.0, 3) (1.2, 8) (1.4, 15)
           (1.6, 20) (1.8, 14) (2.0, 8) (2.2, 4) (2.5, 2) (2.8, 0)
         };
-      \addlegendentry{RL Agent}
+      \addlegendentry{\ac{RL} Agent}
     \end{axis}
   \end{tikzpicture}
   \caption{Example distribution comparison for statistical testing}
   \label{fig:distribution}
 \end{figure}
+
+\newpage
 
 \section{Statistical Tests}
 
@@ -551,9 +561,9 @@ To validate that agent behavior approximates human behavior and to assess statis
 \subsection{Primary Deliverables}
 
 \begin{enumerate}
-  \item \textbf{Trained RL Agent}: An agent capable of completing combat encounters in \emph{Shattered Bonds} with measurable success rates
+  \item \textbf{Trained \ac{RL} Agent}: An agent capable of completing combat encounters in \emph{Shattered Bonds} with measurable success rates
 
-  \item \textbf{UE5 Training Framework}: Documented codebase for RL training in Unreal Engine 5, potentially reusable for similar projects
+  \item \textbf{\ac{UE5} Training Framework}: Documented codebase for \ac{RL} training in \ac{UE5}, potentially reusable for similar projects
 
   \item \textbf{Telemetry Analysis Pipeline}: Tools for comparing agent and human gameplay data
 
@@ -567,9 +577,9 @@ To validate that agent behavior approximates human behavior and to assess statis
 
   \item Methodology for reward shaping that produces human-comparable behaviors
 
-  \item Statistical framework for validating RL playtesting against human baselines
+  \item Statistical framework for validating \ac{RL} playtesting against human baselines
 
-  \item Practical guidelines for integrating RL playtesting into game production
+  \item Practical guidelines for integrating \ac{RL} playtesting into game production
 \end{enumerate}
 
 \subsection{Limitations and Risks}
@@ -578,7 +588,7 @@ To validate that agent behavior approximates human behavior and to assess statis
   \item \textbf{Training time}: Complex environments may require substantial compute resources
   \item \textbf{Sim-to-real gap}: Agent behavior in training may not transfer perfectly to all game scenarios
   \item \textbf{Human data quantity}: Limited human playtester availability may constrain statistical power
-  \item \textbf{UE5 integration complexity}: Technical challenges with engine integration may require fallback approaches
+  \item \textbf{\ac{UE5} integration complexity}: Technical challenges with engine integration may require fallback approaches
 \end{itemize}
 
 %---------------------------------------------------------------Bibliography
@@ -607,11 +617,8 @@ To validate that agent behavior approximates human behavior and to assess statis
   \acro{PPO}[PPO]{Proximal Policy Optimization}
   \acro{SAC}[SAC]{Soft Actor-Critic}
   \acro{UE5}[UE5]{Unreal Engine 5}
-  \acro{DDA}[DDA]{Dynamic Difficulty Adjustment}
   \acro{MARL}[MARL]{Multi-Agent Reinforcement Learning}
   \acro{MLOps}[MLOps]{Machine Learning Operations}
-  \acro{NPC}[NPC]{Non-Player Character}
-  \acro{API}[API]{Application Programming Interface}
 \end{acronym}
 
 \end{document}
